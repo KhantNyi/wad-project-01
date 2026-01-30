@@ -30,11 +30,10 @@ A comprehensive Sales Tracker application built with React and Vite, designed to
 Comprehensive view of business performance with key metrics and detailed charts.
 ![Dashboard Overview](screenshots/dashboard_overview.png)
 
-### Sales Summary & Analysis
-Interactive charts and period-based summary cards.
+### Top 5 Items Analysis
 ![Sales Summary](screenshots/top5_by_revenue.png)
 
-### Top 5 Items Analysis
+
 Sort by **Quantity** to see volume movers, or by **Revenue** to see high-value earners.
 
 | Sorted by Quantity | Sorted by Revenue |
@@ -42,6 +41,7 @@ Sort by **Quantity** to see volume movers, or by **Revenue** to see high-value e
 | ![Sorted by Quantity](screenshots/top5_by_quantity.png) | ![Sorted by Revenue](screenshots/top5_by_revenue.png) |
 
 ### Sales Journal
+### Record a sales
 Record transactions easily with the streamlined form interface.
 ![Sales Journal Form](screenshots/sales_journal_form.png)
 
