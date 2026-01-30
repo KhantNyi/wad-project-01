@@ -1,5 +1,7 @@
 # Sales Tracker Application
 
+### Test it live here - https://khantnyi.github.io/wad-project-01/
+
 ## Team Members
 - **Khant Nyi Thu** (ID: 6632108)
 - **Paing Min Thant** (ID: 6622055)
