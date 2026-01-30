@@ -43,9 +43,9 @@ Sort by **Quantity** to see volume movers, or by **Revenue** to see high-value e
 | ![Sorted by Quantity](screenshots/top5_by_quantity.png) | ![Sorted by Revenue](screenshots/top5_by_revenue.png) |
 
 ### Sales Journal
-### Record a sales
-Record transactions easily with the streamlined form interface.
-![Sales Journal Form](screenshots/sales_journal_form.png)
+### Record a sales with stock tracking functionality
+Record transactions easily with the streamlined form interface and you can't sell more than what you have in stock!
+![Sales Journal Form](screenshots/stock-checking.png)
 
 ### Transaction History
 View and manage all recorded sales in a clean, paginated list.
