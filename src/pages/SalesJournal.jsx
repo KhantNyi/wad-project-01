@@ -14,15 +14,35 @@ function SalesJournal() {
         setTransactions(getTransactions());
     }, []);
 
+    // Calculate remaining inventory
+    const getRemainingStock = (product) => {
+        if (!product) return 0;
+        const soldQuantity = transactions
+            .filter(t => t.productName === product.itemName)
+            .reduce((sum, t) => sum + t.quantity, 0);
+        return product.inventory - soldQuantity;
+    };
+
     // Find product by itemName (using itemName as ID since we don't have explicit IDs)
     const selectedProductData = products.find(p => p.itemName === selectedProduct);
+    const remainingStock = getRemainingStock(selectedProductData);
     const totalPrice = selectedProductData ? selectedProductData.unitPrice * quantity : 0;
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (!selectedProduct || quantity < 1) {
-            alert('Please select a product and enter a valid quantity');
+        if (!selectedProduct) {
+            alert('Please select a product');
+            return;
+        }
+
+        if (quantity < 1) {
+            alert('Please enter a valid quantity');
+            return;
+        }
+
+        if (quantity > remainingStock) {
+            alert(`Insufficient stock! Only ${remainingStock} left in stock.`);
             return;
         }
 
@@ -80,11 +100,14 @@ function SalesJournal() {
                                 required
                             >
                                 <option value="">Select a product...</option>
-                                {products.map((product, index) => (
-                                    <option key={index} value={product.itemName}>
-                                        {product.itemName} - ${product.unitPrice} ({product.category})
-                                    </option>
-                                ))}
+                                {products.map((product, index) => {
+                                    const stock = getRemainingStock(product);
+                                    return (
+                                        <option key={index} value={product.itemName} disabled={stock <= 0}>
+                                            {product.itemName} - ${product.unitPrice} (Stock: {stock})
+                                        </option>
+                                    );
+                                })}
                             </select>
                         </div>
 
@@ -104,8 +127,14 @@ function SalesJournal() {
                                     if (!quantity || quantity < 1) setQuantity(1);
                                 }}
                                 placeholder="Enter quantity"
+                                max={remainingStock}
                                 required
                             />
+                            {selectedProduct && (
+                                <span className="stock-hint" style={{ fontSize: '0.8rem', color: remainingStock < 10 ? 'red' : 'gray' }}>
+                                    Max: {remainingStock}
+                                </span>
+                            )}
                         </div>
 
                         <div className="form-group">
